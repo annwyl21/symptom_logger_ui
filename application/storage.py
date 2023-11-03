@@ -7,7 +7,7 @@ print('Connecting to the PostgreSQL database...')
 conn = psycopg2.connect(
     host='localhost',
     port=5432,
-    dbname='symptom_log',
+    dbname='simple_logger',
     user='postgres',
     password='mysecretpassword'
 )

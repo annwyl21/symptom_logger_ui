@@ -1,0 +1,27 @@
+-- DOCKER commands
+
+-- start docker desktop & open ubuntu
+
+-- check docker is running
+-- docker ps
+
+-- to start the container using an existing image
+-- docker start some-postgres
+
+-- to run a new container using a new image - grabbing the image too all on the command line
+-- docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+
+-- to see the container running
+-- docker ps
+
+-- log in to container
+-- docker exec -it some-postgres /bin/bash
+
+-- login to database to type SQL
+-- psql -h localhost -p5432 -U postgres
+
+--logout of stack: log out of database and repeat to logout of postgres container
+-- CTRL d
+
+-- INSIDE POSTGRES
+-- \c symptom_log

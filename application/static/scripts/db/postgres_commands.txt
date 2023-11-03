@@ -1,0 +1,6 @@
+-- POSTGRES Commands
+
+-- \l to list all databases
+-- \c to connect to database
+-- \dt to display tables
+-- \dn to display a list of schemas
