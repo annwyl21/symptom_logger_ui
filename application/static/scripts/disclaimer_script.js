@@ -1,4 +1,4 @@
 function disclaimer() {
-    confirm("DISCLAIMER: This website was designed by a student programmer and while useful, does not medically evaluate pain and will NEVER offer medical advice.")
+    confirm("DISCLAIMER: Designed to showcase developer skills, while useful this website does not medically evaluate pain and was never intended to offer medical advice.")
     document.getElementById("disclaimer")
 }

@@ -45,7 +45,7 @@ body {
 	background: var(--secondary-color);	
 }
 
-button {
+button, .button {
 	/* Styling the button */
 	background-color: var(--accent-color);
     color: var(--primary-color);
