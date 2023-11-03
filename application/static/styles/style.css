@@ -1,0 +1,67 @@
+/* mobile first */
+
+:root {
+    --primary-color: #f8fbf8;
+    --secondary-color: #e3dac9;
+    --tertiary-color: #f0eee4;
+    --darker-color: #464655;
+    --accent-color: #5e747f;
+}
+
+body {
+	/* Colour of background screen to the app */
+	background-color: var(--darker-color);
+
+	/* Styling the body of the app */
+	color: var(--darker-color);
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: small;
+}
+
+.container {
+	/* Responsive width */
+	width: 100%;
+	max-width: 300px;
+	height: 400px;
+
+	/* Styling the container */
+	padding: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	border-radius: 15px;
+
+	/* Styling contents of the container */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: var(--secondary-color);	
+}
+
+button {
+	/* Styling the button */
+	background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+	margin: 5px;
+	font-size: small;
+}
+
+/* Media query for tablet screens */
+@media screen and (min-width: 1300px) {
+	.container {
+		width: 100%; /* Continue to be responsive */
+		max-width: 750px; /* Set the max width for tablet screens */
+		height: 400px; /* Set a fixed height for tablet screens */
+		padding: 30px;
+	}
+
+	/* Places the container in the middle of the screen */
+	.app-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+	}
+}
