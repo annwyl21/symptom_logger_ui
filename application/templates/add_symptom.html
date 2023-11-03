@@ -2,6 +2,12 @@
 
 {% block main_content %}
 
-
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		{{ form.symptom.label }} {{ form.symptom(size=20) }}
+		{{ form.submit() }}
+	</form>
+</div>
 
 {% endblock %}
