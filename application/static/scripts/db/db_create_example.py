@@ -43,12 +43,12 @@ def modify_db(statement, args=()):
 		return 'error'
 
 def add_a_symptom(date, time, pain_score, symptom):
-	modify_db("INSERT INTO my_log.main(date, time, pain_score, symptom) VALUES(?, ?, ?, ?)", (date, time, pain_score, symptom))
+	print(modify_db("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(?, ?, ?, ?)", (date, time, symptom, pain_score)))
 
 	return True
 
 # json
-json_data = [
+example_log = [
 	{"date":"2023-10-01","time":"20:49","pain_score":1,"description":"Slight discomfort in right hip"},
 	{"date":"2023-10-03","time":"14:07","pain_score":2,"description":"right hip feels stiff to move, difficulty standing for long periods"},
 	{"date":"2023-10-05","time":"07:23","pain_score":3,"description":"Noticeable pain in right hip, especially when climbing stairs."},
@@ -63,7 +63,7 @@ json_data = [
 	{"date":"2023-10-23","time":"07:55","pain_score":10,"description":"Right hip feels very painful after sleeping on it."}
 ]
 
-for item in json_data:
-	add_a_symptom(item['date'], item['time'], item['pain_score'], item['description'])
+for symptom in example_log:
+	add_a_symptom(symptom['date'], symptom['time'], symptom['pain_score'], symptom['description'])
 
-query_db("SELECT * FROM my_log.main;")
+print(query_db("SELECT * FROM my_log.main;"))
