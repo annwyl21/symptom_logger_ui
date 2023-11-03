@@ -4,16 +4,17 @@
 -- psql -h localhost -p5432 -U postgres
 
 create database simple_logger;
--- \c logger
+-- \c simple_logger
 
-create schema logger;
+CREATE SCHEMA IF NOT EXISTS my_log;
 
-create table logger.main (
-    symptom_id serial primary key,
-    date date not null,
-    time time not null,
-    symptom varchar(255) not null,
-    pain_score int;
+CREATE TABLE my_log.main (
+    symptom_id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    symptom VARCHAR(255) NOT NULL,
+    pain_score INT
+);
 
 -- varchar(255) is the max length of a string in MySQL, example:
 -- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis est vel elit faucibus pulvinar. Sed suscipit, mi et eleifend laoreet, nisl libero bibendum justo, vitae scelerisque eros metus sit amet justo. Lorem."

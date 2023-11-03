@@ -25,3 +25,5 @@
 
 -- INSIDE POSTGRES
 -- \c symptom_log
+
+--\q to logout
