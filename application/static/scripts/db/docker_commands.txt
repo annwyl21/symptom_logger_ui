@@ -20,10 +20,16 @@
 -- login to database to type SQL
 -- psql -h localhost -p5432 -U postgres
 
+-- list all databases
+-- \l
+
+-- simple_logger (test database), schema = my_log, table = main
+
 --logout of stack: log out of database and repeat to logout of postgres container
 -- CTRL d
 
 -- INSIDE POSTGRES
--- \c symptom_log
+-- \c simple_logger
+-- select * from my_log.main;
 
 --\q to logout

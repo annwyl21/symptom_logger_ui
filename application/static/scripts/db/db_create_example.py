@@ -12,44 +12,42 @@ conn = psycopg2.connect(
 	password='mysecretpassword'
 )
 
-# Create a cursor object
-cur = conn.cursor()
+# Create cursor object
+dbcon = conn
+dbCursor = conn.cursor()
 print('Connected to the PostgreSQL database')
 
 def query_db(query, args=(), one=False):
 	try:
-		dbcon = conn
-		dbCursor = conn.cursor()
 		dbCursor.execute(query, args) # args helps prevent SQLinjection
 		results = dbCursor.fetchall() # setting one to True will return only the first result, making single returns easier to handle
-		dbCursor.close()
-		dbcon.close()
+		
 		return (results[0] if results else None) if one else results
 	except Exception as e:
-		# logger.error("Database Error: DB Read Failed")
-		return 'error'
+		# logger.error(f"Database Error: {e}")
+		return f"Database Error: {e}"
 
 def modify_db(statement, args=()):
 	try:
-		dbcon = conn
-		dbCursor = conn.cursor()
 		dbCursor.execute(statement, args)
 		dbcon.commit()
-		dbCursor.close()
-		dbcon.close()
+
 		return 'success'
 	except Exception as e:
 		# logger.error("Database Error: DB Modify Failed")
 		return 'error'
 
 def add_a_symptom(date, time, pain_score, symptom):
-	print(modify_db("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(?, ?, ?, ?)", (date, time, symptom, pain_score)))
+	# print("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(?, ?, ?, ?)", (date, time, symptom, pain_score))
+	print(modify_db("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(%s, %s, %s, %s)", (date, time, symptom, pain_score)))
 
 	return True
 
+# Even though %s looks like a string formatting operator in Python, when used in SQL statements with psycopg2, it is treated as a placeholder for a parameter, and psycopg2 will safely interpolate the parameters into the SQL query to prevent SQL injection attacks.
+
 # json
 example_log = [
-	{"date":"2023-10-01","time":"20:49","pain_score":1,"description":"Slight discomfort in right hip"},
+	# {"date":"2023-10-01","time":"20:49","pain_score":1,"description":"Slight discomfort in right hip"},
 	{"date":"2023-10-03","time":"14:07","pain_score":2,"description":"right hip feels stiff to move, difficulty standing for long periods"},
 	{"date":"2023-10-05","time":"07:23","pain_score":3,"description":"Noticeable pain in right hip, especially when climbing stairs."},
 	{"date":"2023-10-07","time":"19:21","pain_score":4,"description":"Pain in right hip while sitting"},
@@ -67,3 +65,6 @@ for symptom in example_log:
 	add_a_symptom(symptom['date'], symptom['time'], symptom['pain_score'], symptom['description'])
 
 print(query_db("SELECT * FROM my_log.main;"))
+
+dbCursor.close()
+dbcon.close()
