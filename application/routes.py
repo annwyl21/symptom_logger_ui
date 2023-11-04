@@ -51,8 +51,6 @@ def summary():
 	# make the api request - summarize
 	print("requesting summary")
 	summary = ApiConnect.request_summary(parcel)
-	print(summary)
 	print("summary received")
-	#summary = 'summary'
 	
 	return render_template('summary.html', title='Summary', scatterplot_url=scatterplot_url, bubbleplot_url=bubbleplot_url, summary=summary)
