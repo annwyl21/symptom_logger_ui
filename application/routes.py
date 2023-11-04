@@ -44,11 +44,10 @@ def summary():
 	
 	scatterplot_url = visualize_response['scatterplot']
 	bubbleplot_url = visualize_response['bubbleplot']
-	# scatterplot_url = "scatterplot"
-	# bubbleplot_url = "bubbleplot"
+
 
 	# make the api request - summarize
-	# add ai button and boolean
-	# display the results
+	summary = ApiConnect.request_summarize(parcel)
+	summary = 'summary'
 	
-	return render_template('summary.html', title='Summary', scatterplot_url=scatterplot_url, bubbleplot_url=bubbleplot_url)
+	return render_template('summary.html', title='Summary', scatterplot_url=scatterplot_url, bubbleplot_url=bubbleplot_url, summary=summary)

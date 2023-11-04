@@ -19,4 +19,17 @@ class ApiConnect():
 		
 		return requests.post(url, headers=headers, data=parcel).json()
 		
+	@staticmethod
+	def request_summary(parcel):
+		# Make the api request
+		endpoint = "https://summarizesl.onrender.com/"
+		path = "slvapi/summarize"
+		url = endpoint + path
+
+		headers = {
+			'Content-Type': 'application/json'
+		}
+
+		# Make the request
+		return requests.post(url, headers=headers, data=parcel).text
 	
