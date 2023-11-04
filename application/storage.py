@@ -23,8 +23,8 @@ def query_db(query, args=(), one=False):
 		dbCursor = conn.cursor()
 		dbCursor.execute(query, args) # args helps prevent SQLinjection
 		results = dbCursor.fetchall() # setting one to True will return only the first result, making single returns easier to handle
-		dbCursor.close()
-		dbcon.close()
+		# dbCursor.close()
+		# dbcon.close()
 		return (results[0] if results else None) if one else results
 	except Exception as e:
 		# logger.error(f"Database Error: {e}")
@@ -36,8 +36,8 @@ def modify_db(statement, args=()):
 		dbCursor = conn.cursor()
 		dbCursor.execute(statement, args)
 		dbcon.commit()
-		dbCursor.close()
-		dbcon.close()
+		# dbCursor.close()
+		# dbcon.close()
 		return 'success'
 	except Exception as e:
 		# logger.error(f"Database Error: {e}")
@@ -52,7 +52,7 @@ class Symptom_log:
 
 	
 	def get_all_symptoms():
-		return query_db("SELECT * FROM my_log.main ORDER BY date DESC, time DESC")
+		return query_db("SELECT * FROM my_log.main ORDER BY date ASC, time ASC")
 	
 	def create_symptom_list(data):
 		json_output = Symptom_log.convert_to_json(data)

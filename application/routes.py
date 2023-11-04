@@ -34,19 +34,25 @@ def add_symptom():
 def summary():
 
 	# Retrieve data from database
+	print("requesting data")
 	result = Symptom_log.get_all_symptoms()
 
 	# Parcel it into the json for the api
+	print("creating parcel")
 	parcel = Symptom_log.create_symptom_list(result)
 
 	# make the api request - visualize
+	print("requesting visuals")
 	visualize_response = ApiConnect.request_visuals(parcel)
+	print("visuals received")
 		
 	scatterplot_url = visualize_response['scatterplot']
 	bubbleplot_url = visualize_response['bubbleplot']
 
 
 	# make the api request - summarize
+	print("requesting summary")
 	summary = ApiConnect.request_summary(parcel)
+	print("summary received")
 	
 	return render_template('summary.html', title='Summary', scatterplot_url=scatterplot_url, bubbleplot_url=bubbleplot_url, summary=summary)
