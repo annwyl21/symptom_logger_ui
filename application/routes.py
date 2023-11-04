@@ -19,9 +19,13 @@ def add_symptom():
 		date = now.strftime("%Y-%m-%d")
 		time = now.strftime("%Y-%m-%d")
 
-		Symptom_log.add_a_symptom(date, time, pain_score, symptom)
+		result = Symptom_log.add_a_symptom(date, time, pain_score, symptom)
 
-		return render_template('success.html', title="Success", pain=pain_score, symptom=symptom, date=date, time=time)
+		if result:
+			return render_template('success.html', title="Success", pain=pain_score, symptom=symptom, date=date, time=time)
+		
+		else:
+			return render_template('error.html', title="Error", pain=pain_score, symptom=symptom, date=date, time=time)
 	
 	return render_template('add_symptom.html', title='Add Symptom', form=form)
 

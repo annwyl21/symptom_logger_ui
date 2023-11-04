@@ -44,7 +44,10 @@ def modify_db(statement, args=()):
 class Symptom_log:
 
 	def add_a_symptom(date, time, pain_score, symptom):
-		modify_db("INSERT INTO logger.symptom_collection(date, time, pain_score, symptom) VALUES(%s, %s, %s, %s)", (date, time, pain_score, symptom))
+		modify_db("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(%s, %s, %s, %s)", (date, time, symptom, pain_score))
 
 		return True
+	
+	def get_all_symptoms():
+		return query_db("SELECT * FROM logger.symptom_collection ORDER BY date DESC")
 	
