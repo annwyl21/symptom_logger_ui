@@ -61,6 +61,11 @@ a:any-link {
 	text-decoration: none;
 }
 
+img {
+	width: 180px;
+	height: 100px;
+}
+
 /* Media query for tablet screens */
 @media screen and (min-width: 1300px) {
 	.container {
@@ -72,6 +77,11 @@ a:any-link {
 
 	body {
 		font-size: medium;
+	}
+
+	img {
+		width: 280px;
+		height: 200px;
 	}
 
 }
