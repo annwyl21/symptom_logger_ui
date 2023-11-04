@@ -3,3 +3,4 @@ flask_wtf
 wtforms
 psycopg2
 requests
+gunicorn
