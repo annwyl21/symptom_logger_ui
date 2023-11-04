@@ -24,6 +24,11 @@ body {
 	color: var(--darker-color);
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: small;
+	
+}
+
+h1, h2, h3 {
+	align-self: center;
 }
 
 .container {
@@ -33,16 +38,15 @@ body {
 	height: 450px;
 
 	/* Styling the container */
-	padding: 10px;
+	padding: 25px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	border-radius: 15px;
 
 	/* Styling contents of the container */
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	background: var(--secondary-color);	
+	
 }
 
 button, .button {
@@ -62,8 +66,8 @@ a:any-link {
 }
 
 img {
-	width: 180px;
-	height: 100px;
+	width: 250px;
+	height: 185px;
 }
 
 /* Media query for tablet screens */
@@ -77,11 +81,6 @@ img {
 
 	body {
 		font-size: medium;
-	}
-
-	img {
-		width: 280px;
-		height: 200px;
 	}
 
 }
