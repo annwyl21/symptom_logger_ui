@@ -2,6 +2,7 @@ from flask import render_template, request
 from application import app
 from application.forms import RecordForm
 from application.storage import Symptom_log
+from application.api_connections import ApiConnect
 from datetime import datetime
 
 @app.route('/')
@@ -19,9 +20,13 @@ def add_symptom():
 		date = now.strftime("%Y-%m-%d")
 		time = now.strftime("%Y-%m-%d")
 
-		Symptom_log.add_a_symptom(date, time, pain_score, symptom)
+		result = Symptom_log.add_a_symptom(date, time, pain_score, symptom)
 
-		return render_template('success.html', title="Success", pain=pain_score, symptom=symptom, date=date, time=time)
+		if result == True:
+			return render_template('success.html', title="Success", pain=pain_score, symptom=symptom, date=date, time=time)
+		
+		else:
+			return render_template('error.html', title="Error", pain=pain_score, symptom=symptom, date=date, time=time)
 	
 	return render_template('add_symptom.html', title='Add Symptom', form=form)
 
@@ -29,10 +34,19 @@ def add_symptom():
 def summary():
 
 	# Retrieve data from database
+	result = Symptom_log.get_all_symptoms()
+
 	# Parcel it into the json for the api
+	parcel = Symptom_log.create_symptom_list(result)
+
 	# make the api request - visualize
+	visualize_response = ApiConnect.request_visuals(parcel)
+		
+	scatterplot_url = visualize_response['scatterplot']
+	bubbleplot_url = visualize_response['bubbleplot']
+
+
 	# make the api request - summarize
-	# add ai button and boolean
-	# display the results
+	summary = ApiConnect.request_summary(parcel)
 	
-	return render_template('summary.html', title='Summary')
+	return render_template('summary.html', title='Summary', scatterplot_url=scatterplot_url, bubbleplot_url=bubbleplot_url, summary=summary)

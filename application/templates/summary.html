@@ -2,9 +2,12 @@
 
 {% block main_content %}
 
-ready to create summary
+<h1>Symptom Log</h1>
 
+<h4>Summary</h4>
 
-<script src="{{ url_for('static', filename='scripts/storage.js') }}"></script>
+<p>{{ summary }}</p>
+
+<img src="{{ bubbleplot_url }}" alt="Bubbleplot displaying a log of symptoms over time, bubble size is an indicator of pain">
 
 {% endblock %}
