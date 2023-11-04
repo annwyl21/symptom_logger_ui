@@ -1,5 +1,13 @@
 /* mobile first */
 
+/* Places the container in the middle of the screen */
+.app-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+} 
+
 :root {
     --primary-color: #f8fbf8;
     --secondary-color: #e3dac9;
@@ -22,7 +30,7 @@ body {
 	/* Responsive width */
 	width: 100%;
 	max-width: 300px;
-	height: 400px;
+	height: 450px;
 
 	/* Styling the container */
 	padding: 10px;
@@ -37,7 +45,7 @@ body {
 	background: var(--secondary-color);	
 }
 
-button {
+button, .button {
 	/* Styling the button */
 	background-color: var(--accent-color);
     color: var(--primary-color);
@@ -48,20 +56,22 @@ button {
 	font-size: small;
 }
 
+a:any-link { 
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
 /* Media query for tablet screens */
 @media screen and (min-width: 1300px) {
 	.container {
 		width: 100%; /* Continue to be responsive */
 		max-width: 750px; /* Set the max width for tablet screens */
-		height: 400px; /* Set a fixed height for tablet screens */
+		height: 450px; /* Set a fixed height for tablet screens */
 		padding: 30px;
 	}
 
-	/* Places the container in the middle of the screen */
-	.app-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
+	body {
+		font-size: medium;
 	}
+
 }

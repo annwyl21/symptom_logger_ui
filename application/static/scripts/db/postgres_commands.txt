@@ -1,0 +1,15 @@
+-- POSTGRES Commands
+
+-- \l to list all databases
+-- \c to connect to database with the database name
+-- eg \c simple_logger & \q to quit
+
+-- \dt to display tables
+-- eg \dt logger.*
+
+-- \dn to display a list of schemas
+
+-- Create new db user and grant priviledges
+CREATE USER my_new_user WITH PASSWORD 'password';
+GRANT SELECT, INSERT, UPDATE, DELETE ON my_new_schema.my_new_table TO my_new_user;
+

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block main_content %}
+
+<h1>Symptom Log</h1>
+<h2>Add a Symptom</h2>
+
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+
+		<label for="symptom">Record your symptom here</label>
+		<br>
+		<textarea class="form-control" id="symptom" rows="5" name="symptom" placeholder="add your symptom here..."></textarea>
+		<br>
+		<label for="pain">Enter a pain score <br>(1=Little Pain, 10=Severe Pain)</label>
+		<br>
+		<input type="number" id="pain" name="pain" placeholder="0">
+		<br>
+		{{ form.submit(class="button") }}
+	</form>
+</div>
+
+{% endblock %}
