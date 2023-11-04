@@ -21,7 +21,7 @@ def add_symptom():
 
 		result = Symptom_log.add_a_symptom(date, time, pain_score, symptom)
 
-		if result:
+		if result == True:
 			return render_template('success.html', title="Success", pain=pain_score, symptom=symptom, date=date, time=time)
 		
 		else:
@@ -33,7 +33,11 @@ def add_symptom():
 def summary():
 
 	# Retrieve data from database
+	result = Symptom_log.get_all_symptoms()
+
 	# Parcel it into the json for the api
+	parcel = Symptom_log.create_symptom_list(result)
+
 	# make the api request - visualize
 	# make the api request - summarize
 	# add ai button and boolean
