@@ -34,8 +34,8 @@ def modify_db(statement, args=()):
 
 		return 'success'
 	except Exception as e:
-		# logger.error("Database Error: DB Modify Failed")
-		return 'error'
+		# logger.error(f"Database Error: {e}")
+		return f"Database Error: {e}"
 
 def add_a_symptom(date, time, pain_score, symptom):
 	# print("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(?, ?, ?, ?)", (date, time, symptom, pain_score))

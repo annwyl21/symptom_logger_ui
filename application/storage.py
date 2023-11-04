@@ -25,8 +25,8 @@ def query_db(query, args=(), one=False):
 		dbcon.close()
 		return (results[0] if results else None) if one else results
 	except Exception as e:
-		# logger.error("Database Error: DB Read Failed")
-		return 'error'
+		# logger.error(f"Database Error: {e}")
+		return f"Database Error: {e}"
 
 def modify_db(statement, args=()):
 	try:
@@ -38,13 +38,13 @@ def modify_db(statement, args=()):
 		dbcon.close()
 		return 'success'
 	except Exception as e:
-		# logger.error("Database Error: DB Modify Failed")
-		return 'error'
+		# logger.error(f"Database Error: {e}")
+		return f"Database Error: {e}"
 
 class Symptom_log:
 
 	def add_a_symptom(date, time, pain_score, symptom):
-		modify_db("INSERT INTO logger.symptom_collection(date, time, pain_score, symptom) VALUES(?, ?, ?, ?)", (date, time, pain_score, symptom))
+		modify_db("INSERT INTO logger.symptom_collection(date, time, pain_score, symptom) VALUES(%s, %s, %s, %s)", (date, time, pain_score, symptom))
 
 		return True
 	
