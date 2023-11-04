@@ -22,7 +22,8 @@ class ApiConnect():
 	@staticmethod
 	def request_summary(parcel):
 		# Make the api request
-		endpoint = "https://summarizesl.onrender.com/"
+		#endpoint = "https://summarizesl.onrender.com/"
+		endpoint = "http://localhost:5500/"
 		path = "slvapi/summarize"
 		url = endpoint + path
 
@@ -31,5 +32,7 @@ class ApiConnect():
 		}
 
 		# Make the request
-		return requests.post(url, headers=headers, data=parcel).text
+		response = requests.post(url, headers=headers, data=parcel)
+		
+		return response.text
 	
