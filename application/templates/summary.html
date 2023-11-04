@@ -3,6 +3,9 @@
 {% block main_content %}
 
 ready to create summary
+<h1>Results</h1>
+{{ scatterplot_url}}
+<img src="{{ scatterplot_url }}" alt="scatterplot" width="250" height="200">
 
 
 <script src="{{ url_for('static', filename='scripts/storage.js') }}"></script>
