@@ -19,7 +19,6 @@ print('Connected to the PostgreSQL database')
 #query & commit function to create clean code &  prevent SQL injection
 def query_db(query, args=(), one=False):
 	try:
-		dbcon = conn
 		dbCursor = conn.cursor()
 		dbCursor.execute(query, args) # args helps prevent SQLinjection
 		results = dbCursor.fetchall() # setting one to True will return only the first result, making single returns easier to handle
@@ -32,10 +31,9 @@ def query_db(query, args=(), one=False):
 
 def modify_db(statement, args=()):
 	try:
-		dbcon = conn
 		dbCursor = conn.cursor()
 		dbCursor.execute(statement, args)
-		dbcon.commit()
+		conn.commit()
 		# dbCursor.close()
 		# dbcon.close()
 		return 'success'
@@ -47,6 +45,8 @@ class Symptom_log:
 
 	def add_a_symptom(date, time, pain_score, symptom):
 		result = modify_db("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(%s, %s, %s, %s)", (date, time, symptom, pain_score))
+		print("INSERT INTO my_log.main(date, time, symptom, pain_score) VALUES(%s, %s, %s, %s)", (date, time, symptom, pain_score))
+		print(result)
 
 		return True if result == 'success' else False
 
