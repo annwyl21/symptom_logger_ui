@@ -52,7 +52,7 @@ h1, h2, h3 {
 button, .button {
 	/* Styling the button */
 	background-color: var(--accent-color);
-    color: var(--primary-color);
+    color: var(--tertiary-color);
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -61,13 +61,30 @@ button, .button {
 }
 
 a:any-link { 
-	color: var(--primary-color);
+	color: var(--tertiary-color);
 	text-decoration: none;
 }
 
 img {
 	width: 250px;
 	height: 185px;
+}
+
+.granny {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 1px solid var(--darker-color);
+}
+
+.title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.disclaimer {
+	align-self: flex-end;
 }
 
 /* Media query for tablet screens */
