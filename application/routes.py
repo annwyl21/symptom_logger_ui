@@ -14,11 +14,13 @@ def add_symptom():
 	form = RecordForm()
 	if request.method == 'POST':
 		pain_score = form.pain.data
+		if pain_score == None:
+			pain_score = 0
 		symptom = form.symptom.data
 
 		now = datetime.now()
 		date = now.strftime("%Y-%m-%d")
-		time = now.strftime("%Y-%m-%d")
+		time = now.strftime("%H:%M")
 
 		result = Symptom_log.add_a_symptom(date, time, pain_score, symptom)
 
